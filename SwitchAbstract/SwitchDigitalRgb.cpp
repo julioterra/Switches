@@ -2,19 +2,19 @@
 
 // CONSTRUCTOR: initializes an instance of the switch class
 // PARAMS: an id number for the switch and the input pin number
-SwitchDigitalRgb::SwitchDigitalRgb(int _ID, int _input_pin, int _states) {
-    // toggle_states = _states;
-    // is_momentary = false;
-    // 
-    // led_available = false;
-    // led_on = false;
-    // led_midi_control = false;
-    // 
-    // for (int j = 0; j < RGB_COUNT; j++) current_led_state[j] = 0;
-    // for (int i = 0; i < STATE_MAX; i++) 
-    //     for (int j = 0; j < RGB_COUNT; j++) led_digital_states[i][j] = 0;
-	SwitchDigitalRgb(_ID, _input_pin);
-	set_number_of_states(_states);
+SwitchDigitalRgb::SwitchDigitalRgb(int _ID, int _input_pin, int _states) : SwitchDigital(_ID, _input_pin) {
+    toggle_states = _states;
+    is_momentary = false;
+    
+    led_available = false;
+    led_on = false;
+    led_midi_control = false;
+    
+    for (int j = 0; j < RGB_COUNT; j++) current_led_state[j] = 0;
+    for (int i = 0; i < STATE_MAX; i++) 
+        for (int j = 0; j < RGB_COUNT; j++) led_digital_states[i][j] = 0;
+	// SwitchDigitalRgb(_ID, _input_pin);
+	// set_number_of_states(_states);
 }
 
 SwitchDigitalRgb::SwitchDigitalRgb(int _ID, int _input_pin) : SwitchDigital(_ID, _input_pin) {
@@ -32,7 +32,7 @@ SwitchDigitalRgb::SwitchDigitalRgb(int _ID, int _input_pin) : SwitchDigital(_ID,
 
 // SET NUMBER OF STATES: sets number of states for this RGB switch
 // PARAMS: a number of states 
-void set_number_of_states(int _states) {
+void SwitchDigitalRgb::set_number_of_states(int _states) {
 	toggle_states = _states;
 }
 

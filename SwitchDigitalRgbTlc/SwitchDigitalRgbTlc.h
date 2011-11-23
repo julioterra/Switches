@@ -25,8 +25,8 @@
 
 class SwitchDigitalRgbTlc: public SwitchDigitalRgb {    
     public:    
-		SwitchDigitalRgbTlc(int, int);			// constructor
 		SwitchDigitalRgbTlc(int, int, int);		// constructor
+		SwitchDigitalRgbTlc(int, int);			// constructor
 		void set_led_pins(int, int, int);       // redefine set led pins method
 		void update_leds();                     // redefine updated eleds method
 };

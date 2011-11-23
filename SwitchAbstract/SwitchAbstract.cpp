@@ -13,20 +13,20 @@ SwitchAbstract::SwitchAbstract(int _ID, int _pin) {
 
 // GET_STATE: returns the current state of the switch and sets new_state flag to false
 // RETURN: current state
-float SwitchAbstract::get_state() {
+int SwitchAbstract::get_state() {
     new_state = false;
     return output_state;
 }
 // GET_STATE: returns the current state of the switch and prints the state to serial monitor
 // RETURN: current state
-float SwitchAbstract::get_print_state() {
+int SwitchAbstract::get_print_state() {
     Serial.println(int(output_state));
     return get_state();
 }
 
 // GET_STATE: returns the current state of the switch and prints the state to serial monitor
 // RETURN: current state
-float SwitchAbstract::get_print_byte_state() {
+int SwitchAbstract::get_print_byte_state() {
     Serial.print(byte(int(output_state)));
     return get_state();
 }

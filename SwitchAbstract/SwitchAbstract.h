@@ -20,7 +20,7 @@
 #define __SwitchAbstract_h__
 
 #include "WProgram.h"
-#include <../AMUP_Libraries/AMUPconfig.h>
+#include "./SwitchesConfig.h"
 
 class SwitchAbstract {
     public:

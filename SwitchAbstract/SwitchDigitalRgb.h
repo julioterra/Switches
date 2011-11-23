@@ -22,8 +22,8 @@
 #ifndef __SwitchDigitalRGB_h__
 #define __SwitchDigitalRGB_h__
 
-#include "WProgram.h"
-#include "../SwitchDigital/SwitchDigital.h"
+// #include "WProgram.h"
+#include "SwitchDigital.h"
 
 class SwitchDigitalRgb: public SwitchDigital {
     
@@ -33,14 +33,15 @@ class SwitchDigitalRgb: public SwitchDigital {
 		int led_pins[RGB_COUNT];    // holds the pin numbers for the R, G, and B pins
         int max_bright;             // holds the maximum brightness for each RBG output
         int toggle_states;          // holds number of toggle states for a given switch (6 Max)
-        int led_digital_states[TOGGLE_MAX][RGB_COUNT];  // holds brightness of each led for diff. toggle states 
+        int led_digital_states[STATE_MAX][RGB_COUNT];  // holds brightness of each led for diff. toggle states 
     
         bool led_available;         // flag set to true if RGB's pins have been registered
         bool led_on;                // flag set to true when a button's RGB led is on
         bool led_midi_control;		// flag that identifies of button light controlled by external device
         int current_led_state[RGB_COUNT]; // holds the R, G, and B values associated to current led state   
 
-        SwitchDigitalRgb(int, int);   		// constructor for RGB button class
+        SwitchDigitalRgb(int, int, int);   		// constructor for RGB button class
+        SwitchDigitalRgb(int, int);   			// constructor for RGB button class
         virtual void set_led_pins(int, int, int, int) {};   // method to be redefined in matrix child version of class
         virtual void set_led_pins(int, int, int) {};        // method to be redefined in TLC child version of class
 		void set_number_of_states(int);						// sets the number of states 
