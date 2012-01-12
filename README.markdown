@@ -4,7 +4,7 @@
   
 In order to use these libraries with your Arduino you will need to copy the contents of the switches folders into your libraries folder. Otherwise, your Arduino will not be able to locate these resources. It is strongly recommended that you put all of these folders into your library folder to avoid potential issues and errors as all of these libraries contain references to one another.
 
-Please refer to the wiki for an illustration of [how all of these libraries are related to one another](https://github.com/julioterra/Switches/wiki/Switches-Libraries:-Class-Hierarchy).
+Please refer to the wiki for an illustration of [how all of these libraries are related to one another](https://github.com/julioterra/Switches/wiki).
 
 **Managing Physical Input:**  
   

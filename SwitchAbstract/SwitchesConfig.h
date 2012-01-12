@@ -12,7 +12,11 @@
 #ifndef __SwitchesConfig_h__
 #define __SwitchesConfig_h__
 
-#include "WProgram.h"
+#if defined(ARDUINO) && ARDUINO >= 100
+  #include "Arduino.h"
+  #else
+  #include "WProgram.h"
+#endif
 
 /* GLOBAL CONSTANTS */
 #define debug_code		false         		// used for debugging library 
