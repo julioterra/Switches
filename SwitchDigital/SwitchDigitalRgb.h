@@ -22,7 +22,7 @@
 #ifndef __SwitchDigitalRGB_h__
 #define __SwitchDigitalRGB_h__
 
-#include "SwitchDigital.h"
+#include "./SwitchDigital.h"
 
 class SwitchDigitalRgb: public SwitchDigital {
     

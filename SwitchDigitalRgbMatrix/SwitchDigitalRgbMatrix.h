@@ -29,7 +29,7 @@
 #ifndef __SwitchDigitalRgbMatrix_h__
 #define __SwitchDigitalRgbMatrix_h__
 
-#include "../SwitchAbstract/SwitchDigitalRgb.h"
+#include "../SwitchDigital/SwitchDigitalRgb.h"
 
 class SwitchDigitalRgbMatrix: public SwitchDigitalRgb {    
     public:    

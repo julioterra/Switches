@@ -20,7 +20,7 @@
 #ifndef __SwitchDigitalRgbTlc_h__
 #define __SwitchDigitalRgbTlc_h__
 
-#include "../SwitchAbstract/SwitchDigitalRGB.h"
+#include "../SwitchDigital/SwitchDigitalRGB.h"
 #include "../Tlc5940/Tlc5940.h"
 
 class SwitchDigitalRgbTlc: public SwitchDigitalRgb {    
