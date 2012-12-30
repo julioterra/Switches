@@ -2,7 +2,7 @@
 
 // CONSTRUCTOR: initializes an instance of the Rotary Encoder class
 // PARAMETERS: switch ID number, pin a and pin b numbers.
-SwitchEncoder::SwitchEncoder(int _ID, int _pin_a, int _pin_b) : SwitchAbstract(_ID, _pin_a) {
+SwitchEncoder::SwitchEncoder(int _pin_a, int _pin_b) : SwitchAbstract(_pin_a) {
     // set pin numbers and pullup resistors (pin A set in parent class constructor)
     pin_b = _pin_b;
     pinMode(pin_b, INPUT);          // set pin mode to input

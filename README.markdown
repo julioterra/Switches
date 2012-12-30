@@ -18,7 +18,7 @@ This set of libraries was designed to handle several different types of physical
 The constructor for all classes accepts the pin number to which the physical switch will be connected. The exception is the rotary encoder class, which accepts two pin numbers. Each child class also features other configuration options, which are covered in the switch-specific sections.
 
 ```
-SwitchAbstract(int _pin)  // abstract class constructor
+SwitchAbstract(int _pin)	// abstract class constructor
 ```  
   
 ###Available Method  

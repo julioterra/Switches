@@ -2,11 +2,11 @@
 
 // CONSTRUCTOR: initialize all the variables associated to this class
 // PARAMS: accepts a switch ID, input pin number and number of switch states
-SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _ID, int _input_pin) : SwitchDigitalRgb(_ID, _input_pin) {
+SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _input_pin) : SwitchDigitalRgb(_input_pin) {
     max_bright = LED_MAX_BRIGHT_MATRIX;
 }
 
-SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _ID, int _input_pin, int _states) : SwitchDigitalRgb(_ID, _input_pin, _states) {
+SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _input_pin, int _states) : SwitchDigitalRgb(_input_pin, _states) {
     max_bright = LED_MAX_BRIGHT_MATRIX;
 }
 
@@ -43,6 +43,8 @@ void SwitchDigitalRgbMatrix::update_leds() {
             digitalWrite(led_pins[R], LOW);
             digitalWrite(led_pins[G], LOW);
             digitalWrite(led_pins[B], LOW);
+            digitalWrite(led_button_pin, LOW); 
+            delayMicroseconds(30);
             digitalWrite(led_button_pin, HIGH); 
         }
     }

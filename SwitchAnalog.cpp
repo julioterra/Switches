@@ -1,8 +1,10 @@
 #include "SwitchAnalog.h"
 
-// CONSTRUCTOR: initializes an instance of the SwitchAnalog class
-// PARAMS: an id number for the switch and the input pin number
-SwitchAnalog::SwitchAnalog(int _ID, int _pin) : SwitchAbstract(_ID, _pin) {
+/**
+ * SwitchAnalog::SwitchAnalog Constructor that initializes an instance of this class
+ * @params _pin The pin number where the switch is connected
+ */
+SwitchAnalog::SwitchAnalog(int _pin) : SwitchAbstract(_pin) {
     last_reading = 0;
     range_min = 0;
     range_max = 1023;
@@ -10,32 +12,33 @@ SwitchAnalog::SwitchAnalog(int _ID, int _pin) : SwitchAbstract(_ID, _pin) {
 	output_range = OUTPUT_RANGE;
 }
 
-// SET ANALOG: sets a custom range for the current instance of the switch. Standard range is from 0 to 1023.
-// PARAMS: the max and minimum values of the analog range
+/**
+ * SwitchAnalog::set_analog_range sets a custom sensor range for the current instance of the 
+ *     switch. Standard range is from 0 to 1023.
+ * @param _min the minimum values of the analog range
+ * @param _max the max values of the analog range
+ */
 void SwitchAnalog::set_analog_range(int _min, int _max) {
     range_min = _min;      
     range_max = _max;   
     range = range_max - range_min;      
 }
 
-void SwitchAnalog::set_output_range(int _output_range) {
-	output_range = _output_range;
-}
-
-// INVERT SWITCH: inverts this analogswitch object
+/**
+ * SwitchAnalog::invert_switch Inverts the analog switch so that when the sensor value is
+ *     at the top of the range it returns the value from the bottom of the range, and vice
+ *     versa.
+ * @param _onState When true it inverts the values, when false it stops inversing values
+ */
 void SwitchAnalog::invert_switch(bool _onState) {
-    if (_onState) { 
-        is_inverted = true;    
-    }
-    
-    else {
-        is_inverted = false;   
-    }    
+    is_inverted = _onState;
 }
 
-// HAS STATE CHANGED: reads switch pin and determines if state has changed
-// RETURNS: true if switch state has changed, false if state has not changed
-// if reading from mux, you need to set the proper pins first, outside of the library
+/**
+ * SwitchAnalog::available Reads switch pin and determines if state has changed. Performs
+ *     smoothing functions to stabilize the switch readings.
+ * @return true if switch state has changed, false if state has not changed
+ */
 bool SwitchAnalog::available() {
     long currentTime = millis();    
     int raw_state = analogRead(pin);
@@ -53,7 +56,7 @@ bool SwitchAnalog::available() {
         new_state = true;
         last_reading = current_state;
 		if (current_state <= 5) current_state = 0;
-        if (range == OUTPUT_RANGE) output_state = current_state;
+        if (range == output_range) output_state = current_state;
         else output_state = int(float(float((current_state) - range_min)/float(range)) * float(output_range));
         return true;   
     }

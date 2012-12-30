@@ -1,31 +1,43 @@
 #include "SwitchDigital.h"
 
-// CONSTRUCTOR: initializes an instance of the switch class
-// PARAMS: an id number for the switch and the input pin number
-SwitchDigital::SwitchDigital(int _ID, int _pin) : SwitchAbstract(_ID, _pin) {
+/**
+ * SwitchDigital::SwitchDigital Constructor that initializes an instance of this class
+ * @params _pin The pin number where the switch is connected
+ */
+SwitchDigital::SwitchDigital(int _pin) : SwitchAbstract(_pin) {
     reading_debounce_time = 0;
     is_inverted = false;
     is_momentary = true;
 }
 
-// INVERT SWITCH: inverts this switch object, and turns on the pullup resistor
-// NOTE: if you are using a mux then you need to make sure that all switches have
-//       the same setup.
+/**
+ * SwitchDigital::invert_switch inverts this switch object, and turns on the pullup resistor.
+ * @param _onState When true it inverts this switch object, when false it stops inversing the object
+ */
 void SwitchDigital::invert_switch(bool _onState) {
-    if (_onState) { 
-        is_inverted = true;    
+    is_inverted = _onState; 
+    if (is_inverted) { 
         digitalWrite(pin, HIGH);
     }
     
     else {
-        is_inverted = false;   
         digitalWrite(pin, LOW);
     }    
 }
 
-// AVAILBLE: reads switch pin, debounces reading, and determines if state has changed
-// RETURNS: true if switch state has changed, false if state has not changed
-// NOTE: if reading from mux, you need to set the control pins before calling this method
+/**
+ * SwitchDigital::momentary_button Sets the switch to function as a momentary switch or a
+ *     state-based button. By default buttons are set as momentary switches. 
+ * @param _is_momentary Boolean value that sets the button to momentary mode when set to true
+ */
+void SwitchDigital::momentary_button (bool _is_momentary){
+    is_momentary = _is_momentary;
+}
+
+/**
+ * SwitchDigital::available Reads switch pin, debounces reading, and determines if state has changed
+ * @return True if switch state has changed, false if state has not changed
+ */
 bool SwitchDigital::available() {
     int new_reading = digitalRead(pin);
     
@@ -44,8 +56,11 @@ bool SwitchDigital::available() {
         if (new_reading != current_state) {
             new_state = true;
             current_state = new_reading;   
+
 			// if switch is momentary then set output state to current state
             if (is_momentary) output_state = current_state; 
+            else if (current_state > LOW) output_state = (output_state + 1) % 2;
+
         }
     }    
     

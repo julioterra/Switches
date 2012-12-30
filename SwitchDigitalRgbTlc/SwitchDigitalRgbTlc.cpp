@@ -2,11 +2,11 @@
 
 // CONSTRUCTOR: initializes an instance of the switch class
 // PARAMS: an id number for the switch and the input pin number and number of states
-SwitchDigitalRgbTlc::SwitchDigitalRgbTlc(int _ID, int _input_pin) : SwitchDigitalRgb(_ID, _input_pin) {
+SwitchDigitalRgbTlc::SwitchDigitalRgbTlc(int _input_pin) : SwitchDigitalRgb(_input_pin) {
     max_bright = LED_MAX_BRIGHT_TLC;
 }
 
-SwitchDigitalRgbTlc::SwitchDigitalRgbTlc(int _ID, int _input_pin, int _states) : SwitchDigitalRgb(_ID, _input_pin, _states) {
+SwitchDigitalRgbTlc::SwitchDigitalRgbTlc(int _input_pin, int _states) : SwitchDigitalRgb(_input_pin, _states) {
     max_bright = LED_MAX_BRIGHT_TLC;
 }
 

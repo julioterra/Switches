@@ -1,27 +1,26 @@
-/*
- SwitchDigital Library
-	By Julio Terra. Updated on November 21, 2011. Created on June 4, 2011.
- 
- 	This library handles digital switches with two states (on and off). 
- 	It supports both momentary and non-momentary switches, and enables you
- 	to set the polarity of a switch. 
- 
- 	Hierarchy: 
-	- Parents Classes: SwitchAbstract
-	- Child Classes: SwitchDigitalRGB [SwitchDigitalRGB_Matrix, SwitchDigitalRGB_TLC] 
-	
- Note: This library is part of the Switches family. To make sure that it runs 
- properly please make sure that all parent libraries are available in the 
- libraries folder of your Arduino folder.
- 
- File name: SwitchDigital.h
- 
+/* 
+ *  Digital Switch Class :: Arduino Switch Library.
+ * 
+ *  This is the digital switch class for switches and buttons with two states. It works only 
+ *  	as a toggle switch, use the SwitchDigital RGB for a and enables changing the polarity of 
+ *  	a switch. It also features debouncing functionality that helps to filter out noise 
+ *  	from readings. 
+ * 
+ *  Class Hierarchy 
+ *  - Parents Classes: SwitchAbstract
+ *  - Child Classes: SwitchDigitalRGB [SwitchDigitalRGB_Matrix, SwitchDigitalRGB_TLC] 
+ *
+ *  @filename SwitchDigital.h 
+ *  @version 1.0.0
+ *  @author Julio Terra
+ *  @date 12/29/12
+ * 
  */
 
 #ifndef __SwitchDigital_h__
 #define __SwitchDigital_h__
 
-#include "../SwitchAbstract/SwitchAbstract.h"
+#include "utility/SwitchAbstract.h"
 
 class SwitchDigital: public SwitchAbstract {
 	public:
@@ -34,9 +33,10 @@ class SwitchDigital: public SwitchAbstract {
 		long unsigned reading_debounce_time;	// holds the last time the switch state changed based on the reading 
 
 		// constructors and methods
-		SwitchDigital(int, int);               // class constructor
+		SwitchDigital(int);             // class constructor
 		void invert_switch(bool);       // method that sets this switch to inverted mode, with pullup resistor
 		bool available();               // redefined method that returns whether switch state has changed
+		void momentary_button(bool);	// sets this button to function like a momentary or non-momentary button
 };
 
 #endif

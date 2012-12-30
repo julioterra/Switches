@@ -29,13 +29,13 @@
 #ifndef __SwitchDigitalRgbMatrix_h__
 #define __SwitchDigitalRgbMatrix_h__
 
-#include "../SwitchDigital/SwitchDigitalRgb.h"
+#include "./SwitchDigitalRgb.h"
 
 class SwitchDigitalRgbMatrix: public SwitchDigitalRgb {    
     public:    
         int led_button_pin;						// holds the voltage pin that is attached to this led on the matrix 
-        SwitchDigitalRgbMatrix(int, int, int);	// constructor
         SwitchDigitalRgbMatrix(int, int);		// constructor
+        SwitchDigitalRgbMatrix(int);			// constructor
         void set_led_pins(int, int, int, int);	// redefine set led pins method
         void update_leds();                     // redefine updated eleds method
 };

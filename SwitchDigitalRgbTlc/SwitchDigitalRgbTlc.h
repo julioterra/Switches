@@ -20,13 +20,13 @@
 #ifndef __SwitchDigitalRgbTlc_h__
 #define __SwitchDigitalRgbTlc_h__
 
-#include "../SwitchDigital/SwitchDigitalRGB.h"
-#include "../Tlc5940/Tlc5940.h"
+#include "./SwitchDigitalRGB.h"
+// #include "../Tlc5940.h"
 
 class SwitchDigitalRgbTlc: public SwitchDigitalRgb {    
     public:    
-		SwitchDigitalRgbTlc(int, int, int);		// constructor
-		SwitchDigitalRgbTlc(int, int);			// constructor
+		SwitchDigitalRgbTlc(int, int);		// constructor
+		SwitchDigitalRgbTlc(int);			// constructor
 		void set_led_pins(int, int, int);       // redefine set led pins method
 		void update_leds();                     // redefine updated eleds method
 };

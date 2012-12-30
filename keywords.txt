@@ -7,6 +7,7 @@ set_output_range	KEYWORD 2
 get_state	KEYWORD 2
 get_print_state	KEYWORD 2
 get_print_byte_state	KEYWORD 2
+get_interrupt_pin	KEYWORD 2
 
 set_led_pins	KEYWORD 2
 set_number_of_states	KEYWORD 2
