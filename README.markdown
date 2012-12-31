@@ -27,7 +27,7 @@ Installing the Switch Library
 * Unzip the downloaded file
 * Remane the "Switches-master" folder to "Switches"
 * Copy this folder into the Arduino libraries folder
-* Get Started with an example, included with library, or [by reading the documentation](#switches-classes-documentation)
+* Get Started with an example, included with library, or [by reading the documentation](#switches-library-classes-documentation)
 
 [back to top](#switches-libraries-for-arduino)  
   
