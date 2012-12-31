@@ -2,12 +2,12 @@
   
 The Switch library for Arduino provides classes for reading the state of switches, buttons, analog switches, and rotary encoders. This library is structured as a set of individual libraries, therefore you should only import the class for the specific type of switch that you are using for your project. 
 
-This library is enables you to handle input from different types of physical inputs using a consistent code/design pattern. As an added bonus, the digital switch classes featured debouncing capabilities while the analog switch classes feature smoothing capabilities (the latter could probably be improved).
+This library enables you to handle input from different types of physical inputs using a consistent code/design pattern. As an added bonus, the digital switch classes feature debouncing capabilities, and the analog switch classes feature smoothing capabilities.
 
 **[Install the Library and Try it Out](#installing-the-switch-library)**
 
   
-###Switch Library Classes  
+###Library Classes  
 Here are links to the documentation for all of the main switch library classes. Jump to these sections if you want to get started trying out the Switches library:
 * [Abstract Switch Class](#abstract-switch-class)  
 * [Switch Class](#switch-class)  
@@ -23,23 +23,26 @@ Here's is a digram that illustrates how all of the library classes relate to one
 Installing the Switch Library
 -----------------------------
 
-* Download the zip file from github repo (click on the button labeled 'zip' at the top of this page)
+* [Download the library zip file](https://github.com/julioterra/Switches/archive/master.zip)
 * Unzip the downloaded file
 * Remane the "Switches-master" folder to "Switches"
 * Copy this folder into the Arduino libraries folder
-* Get Started with an example or tutorial (from below):
-  * [Abstract Switch Class](#abstract-switch-class)  
-	* [Switch Class](#switch-class)  
-	* [RGB Button Class](#rgb-button-class)  
-	* [Analog Switch Class](#analog-switch-class)  
-	* [Rotary Encoder Class](#rotary-encoder-class)  
+* Get Started with an example, included with library, or [by reading the documentation](#switches-classes-documentation)
 
 [back to top](#switches-libraries-for-arduino)  
   
 
-##Abstract Switch Class
-------------------------
-  
+Switches Library Classes Documentation
+======================================
+This section features the documentation for the following Switches library classes:
+* [Abstract Switch Class](#abstract-switch-class)  
+* [Switch Class](#switch-class)  
+* [RGB Button Class](#rgb-button-class)  
+* [Analog Switch Class](#analog-switch-class)  
+* [Rotary Encoder Class](#rotary-encoder-class)  
+
+Abstract Switch Class
+-----------------------
 An abstract switch class that encapsulates the design pattern that is used across all of the implementation switch classes. This class serves as the parent class for all other classes. This class does not need to be imported directly into your app.
   
 ###Constructors  
@@ -79,7 +82,8 @@ virtual void set_output_range(int) {};
   
 [back to top](#switches-libraries-for-arduino)  
   
-##Switch Class
+Switch Class
+------------
 
 An implementation class designed to handle input from switches and buttons with two states. Switches can be configured as momentary switches (default mode) or toggle buttons, more information about these modes in the Switch Modes section below. Switches can also be configured to change their polarity. This class uses debouncing to filter out noise from the physical input.
 
@@ -126,7 +130,7 @@ In the `setup` method we configure the switch by converting its polarity. This i
 button.invert_switch(true);
 ```
 
-**4. Use the Switch**  
+**4. Use Switch**  
 In the `loop` method we check whether the button state has changed by calling the `available` method. If it returns true, then we print the current button state to the serial port by calling `get_print_state`.
 ```
 if(button.available()) {
@@ -202,7 +206,7 @@ In the `setup` method we define the RGB led pin numbers. The `set_led_pins` meth
   button.set_led_pins(3, 5, 6);
 ```
 
-**4. Register the RGB Led Pins**  
+**4. Register RGB Led Pins**  
 Also in the `setup` method we define the led color for each button state. The `set_led_state` method accepts four parameters, the first holds the button state, and the last three hold the brightness values for the red, green, and blue leds. 
 ```
   button.set_led_state(0, 255, 0, 0);
@@ -210,7 +214,7 @@ Also in the `setup` method we define the led color for each button state. The `s
   button.set_led_state(2, 0, 0, 255);
 ```
 
-**5. Use the Button**  
+**5. Use Button**  
 In the `loop` method we check whether the button state has changed by calling the `available` method. If it returns true, then we print the current button state to the serial port by calling `get_print_state`.
 ```
 if(button.available()) {
@@ -308,7 +312,7 @@ Also in the `setup` method we configure the output range for the analog switch. 
 pot.set_output_range( 255 );
 ```
 
-**5. Use the Analog Switch**  
+**5. Use Analog Switch**  
 In the `loop` method we check whether the analog switch state has changed by calling the `available` method. If it returns true, then we print the current button state to the serial port by calling `get_print_state`.
 ```
 if(button.available()) {
@@ -386,7 +390,7 @@ void handleEvent() {
 }
 ```
 
-**6. Use the Rotary Encoder**  
+**6. Use Rotary Encoder**  
 In the `loop` method we check whether the rotary encoder state has changed by calling the `available` method. If it returns true, then we print the current button state to the serial port by calling `get_print_state`.
 ```
 if(button.available()) {
