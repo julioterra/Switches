@@ -1,30 +1,28 @@
-/*
- SwitchDigitalRgbTlc Library
-	By Julio Terra. Updated on November 21, 2011. Created on June 4, 2011.
- 
- 	This library is an implementation of RGB digital switches library that uses
-	a matrix approach to control the RGB leds for each switch. This implementation
-	of the library is less robust than the TLC version. The benefit is that you do 
-	not need additional components such as the TLC led drivers.	
-
-	The main limitations include:
-		1. The number of colors supported is limited because PWM does not work well 
-			with a LED matrix approach
-	 	1. The leds flicker when the switches are pressed since the Arduino is not
-			fast enough to handle input and manage the lights simultaneously.
- 
- 	Hierarchy: 
-	- Parents Classes: SwitchAbstract, SwitchDigital, SwitchDigitalRgb
-	- Child Classes: n/a
-	
- Note: This library is part of the Switches family. To make sure that it runs 
- properly please make sure that all parent libraries are available in the 
- libraries folder of your Arduino folder.
- 
- File name: SwitchDigitalRgbTlc.h
- 
+/* 
+ *  Digital RGB Matrix Switch Class :: Arduino Switch Library.
+ * 
+ *  This RGB matrix switch library creates buttons with multiple states, that use an rgb 
+ *  led as a source of feedback. Buttons can be set with a variable number of states, and
+ *  each state can be mapped to a different rgb color.  
+ *
+ *  This implementation of RGB digital switches library designed to work with leds that are 
+ *  hooked-up in a matrix configuration. There are some limitations that should be considered
+ *  when deciding to use an led matrix:
+ * 	1. The number of colors supported is limited because PWM does not work well 
+ * 	   with a LED matrix approach. You need to set R, G, B color on or off.
+ * 	2. The leds flicker when the switches are pressed since the Arduino is not
+ * 	   fast enough to handle input and manage the lights simultaneously.
+ * 	   
+ *  Class Hierarchy 
+ *  - Parents Classes: SwitchAbstract, SwitchDigital, SwitchDigitalRgb
+ *  - Child Classes: n/a 
+ *   
+ *  @filename SwitchDigitalRgbMatrix.h 
+ *  @version 1.0.0
+ *  @author Julio Terra
+ *  @date 12/29/12
+ * 
  */
-
 
 #ifndef __SwitchDigitalRgbMatrix_h__
 #define __SwitchDigitalRgbMatrix_h__

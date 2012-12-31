@@ -1,7 +1,12 @@
 #include "SwitchEncoder.h"
 
-// CONSTRUCTOR: initializes an instance of the Rotary Encoder class
-// PARAMETERS: switch ID number, pin a and pin b numbers.
+/**
+ * SwitchEncoder::SwitchEncoder Constructor that initializes an instance 
+ *     of this class
+ * @params _pin_a Pin number where first lead will be connected (pin_a). For best performance this
+ *         pin should be an Arduino interrupt pin.
+ * @params _pin_b Pin number where second lead will be connected (pin_b).
+ */
 SwitchEncoder::SwitchEncoder(int _pin_a, int _pin_b) : SwitchAbstract(_pin_a) {
     // set pin numbers and pullup resistors (pin A set in parent class constructor)
     pin_b = _pin_b;
@@ -24,34 +29,48 @@ SwitchEncoder::SwitchEncoder(int _pin_a, int _pin_b) : SwitchAbstract(_pin_a) {
     else interrupt_pin -1;
 }
 
-// GET INTERRUPT PIN: returns the interrupt pin associated to encoder pin A
-// RETURN: interrupt pin number
+/**
+ * SwitchEncoder::get_interrupt_pin Returns the interrupt pin number that corresponds to 
+ *     encoder pin_a. If pin_a is not an interrupt pin then it will return -1 
+ * @return Interrupt pin number corresponding to encoder pin_a
+ */
 int SwitchEncoder::get_interrupt_pin() {
     return interrupt_pin;
 }
 
-// SET DIRECTION: accepts a parameter that sets which direction returns 1s and -1s
-// PARAMETERS: if the integer is greater then 0 one direction, if lesser than 0 it goes the other 
-void SwitchEncoder::set_direction(int _direction) {
-    if (_direction < 0) direction = -1;
+/**
+ * SwitchEncoder::invert_switch Inverts the rotary encoder so that the direction that increments
+ *     and decrements the switch's state are reversed. 
+ * @param _onState When true it inverts the rotary encoder direction, when false the direction is
+ *                 set back to default.
+ */
+
+void SwitchEncoder::invert(bool _onState) {
+    SwitchAbstract::invert(_onState);
+    if (is_inverted) direction = -1;
     else direction = 1;
 }
 
-// EVENT: reads both current pins to determine direction of movement
+/**
+ * SwitchEncoder::event Reads both encoder pins to determine direction of movement, and
+ *     then increments the encoderPos variable. Sets the new_state flag to true.
+ */
 void SwitchEncoder::event() {
     if (digitalRead(pin) == digitalRead(pin_b)) encoderPos = 1 * direction;
     else encoderPos = -1 * direction;
     new_state = true;    
 }
 
-// AVAILABLE: checks if the switch state has changed, and if so assigns it to current_state
-// RETURN: returns whether the switch's state has changed
+/**
+ * SwitchEncoder::available Updates the current_state variable using the encoderPos variable, 
+ *     if the new_state flag is set to true. 
+ * @return Returns true if new data is available, false if no new data is available 
+ */
 bool SwitchEncoder::available(){
     if (new_state) {
         current_state = encoderPos;
         output_state += current_state;
-        if (output_state < 0) output_state = 127;
-        else if (output_state > 127) output_state = 0;
+        output_state = abs(output_state % output_range);
         encoderPos = 0;         
     }
     return new_state;     

@@ -30,7 +30,7 @@
 
 /* ANALOG RGB SWITCH CONSTANTS */
 #define OUTPUT_MIN              	0
-#define OUTPUT_MAX              	127
+#define OUTPUT_MAX              	1023
 #define OUTPUT_RANGE            	OUTPUT_MAX - OUTPUT_MIN
 
 

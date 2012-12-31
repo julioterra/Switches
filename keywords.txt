@@ -1,7 +1,7 @@
 
 
 available	KEYWORD 2
-invert_switch	KEYWORD 2
+invert	KEYWORD 2
 set_analog_range	KEYWORD 2
 set_output_range	KEYWORD 2
 get_state	KEYWORD 2
@@ -17,7 +17,7 @@ update_leds	KEYWORD 2
 turn_on_leds	KEYWORD 2
 turn_off_leds	KEYWORD 2
 set_current_led_state	KEYWORD 2
-momentary_button	KEYWORD 2
+momentary	KEYWORD 2
 
 DIGITAL_SWITCH_DEBOUNCE	LITERAL 1
 LED_MAX_BRIGHT_TLC	LITERAL 1

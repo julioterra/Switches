@@ -8,21 +8,17 @@ SwitchDigital::SwitchDigital(int _pin) : SwitchAbstract(_pin) {
     reading_debounce_time = 0;
     is_inverted = false;
     is_momentary = true;
+    toggle_states = 2;
 }
 
 /**
  * SwitchDigital::invert_switch inverts this switch object, and turns on the pullup resistor.
  * @param _onState When true it inverts this switch object, when false it stops inversing the object
  */
-void SwitchDigital::invert_switch(bool _onState) {
-    is_inverted = _onState; 
-    if (is_inverted) { 
-        digitalWrite(pin, HIGH);
-    }
-    
-    else {
-        digitalWrite(pin, LOW);
-    }    
+void SwitchDigital::invert(bool _onState) {
+    SwitchAbstract::invert(_onState);
+    if (is_inverted) digitalWrite(pin, HIGH);
+    else digitalWrite(pin, LOW);
 }
 
 /**
@@ -30,7 +26,7 @@ void SwitchDigital::invert_switch(bool _onState) {
  *     state-based button. By default buttons are set as momentary switches. 
  * @param _is_momentary Boolean value that sets the button to momentary mode when set to true
  */
-void SwitchDigital::momentary_button (bool _is_momentary){
+void SwitchDigital::momentary (bool _is_momentary){
     is_momentary = _is_momentary;
 }
 
@@ -59,7 +55,7 @@ bool SwitchDigital::available() {
 
 			// if switch is momentary then set output state to current state
             if (is_momentary) output_state = current_state; 
-            else if (current_state > LOW) output_state = (output_state + 1) % 2;
+            else if (current_state > LOW) output_state = (output_state + 1) % toggle_states;
 
         }
     }    

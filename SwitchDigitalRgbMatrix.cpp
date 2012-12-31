@@ -1,18 +1,32 @@
 #include "SwitchDigitalRgbMatrix.h"
 
-// CONSTRUCTOR: initialize all the variables associated to this class
-// PARAMS: accepts a switch ID, input pin number and number of switch states
+/**
+ * SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix Constructor that initializes an instance 
+ *     of this class
+ * @params _pin Pin number where the switch is connected
+ */
 SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _input_pin) : SwitchDigitalRgb(_input_pin) {
     max_bright = LED_MAX_BRIGHT_MATRIX;
 }
 
+/**
+ * SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix Constructor that initializes an instance of 
+ *     this class
+ * @params _pin Pin number where the switch is connected
+ * @params _states Number of states that this switch supports
+ */
 SwitchDigitalRgbMatrix::SwitchDigitalRgbMatrix(int _input_pin, int _states) : SwitchDigitalRgb(_input_pin, _states) {
     max_bright = LED_MAX_BRIGHT_MATRIX;
 }
 
 
-// SET LED PINS: set the led pins for the rgb button
-// PARAMS: first is the common matrix led pin, followed by the R, G, and B pins
+/**
+ * SwitchDigitalRgbMatrix::set_led_pins Set the rgb led pins, including the  
+ * @param _LED_pin Shared pin for these three leds 
+ * @param _R_pin Red led pin number
+ * @param _G_pin Green led pin number
+ * @param _B_pin Blue led pin number
+ */
 void SwitchDigitalRgbMatrix::set_led_pins(int _LED_pin, int _R_pin, int _G_pin, int _B_pin) {
     led_on = true;
     led_available = true;
@@ -28,7 +42,9 @@ void SwitchDigitalRgbMatrix::set_led_pins(int _LED_pin, int _R_pin, int _G_pin, 
     pinMode(led_pins[B], OUTPUT);
 }
 
-// UPDATE LEDS: updates the RGB states based on a change in state
+/**
+ * SwitchDigitalRgbMatrix::update_leds Updates the RGB states based on the current state
+ */
 void SwitchDigitalRgbMatrix::update_leds() {  
     if(led_available) {
         if (led_on) {

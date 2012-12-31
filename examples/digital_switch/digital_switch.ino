@@ -2,9 +2,11 @@
  *  Switch Library Example :: Digital Switch
  *
  *  This example sketch shows how to use the switch library to set-up a simple switch. The get_state 
- *  method returns a 1 when the button is pressed and a 0 when the button is released. Since the switch
- *  on my prototype was set-up with a pullup resistor, I used the invert_switch method (otherwise the 
- *  get_state method would return a 0 when the button is pressed).
+ *  method returns a 1 when the button is pressed and a 0 when the button is released. 
+ *  
+ *  Since the switch on my prototype boards feature switches that are set-up to use the Arduino's 
+ *  internal pullup resistor, I used the invert_switch method to turn on the pullup resistor 
+ *  and to update the state logic to associate button press to a LOW state.
  *
  *  @filename  digital_switch.ino
  *  @author    julio terra

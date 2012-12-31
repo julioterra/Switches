@@ -34,15 +34,17 @@ class SwitchAbstract {
     bool new_state;             // set to true when state changes, until get_state called
     int current_state;          // holds the current momentary state of the switch
     int output_state;           // holds the current output steate of the switch
+    bool is_inverted;           // holds whether the switch is inverted (uses a pullup resistor)
     int output_range;
 
     SwitchAbstract(int);         // initializes all variables
+    void invert(bool);
     virtual bool available() {};    // placeholder function that checks whether the switch's state has changed
-    virtual void invert_switch(bool) {};
     virtual void set_analog_range(int, int) {};
     void set_output_range(int);
     int get_state();              // function that returns current_state and resets new_state flag
     int get_print_state();        // same as get_state function but also prints current_state to serial port
+    int get_print_state(char*);   // same as get_state function but also prints current_state to serial port
     int get_print_byte_state();   // same as get_print_state function but prints state as a byte value
 };
 

@@ -2,7 +2,7 @@
 
 /**
  * SwitchAnalog::SwitchAnalog Constructor that initializes an instance of this class
- * @params _pin The pin number where the switch is connected
+ * @param _pin The pin number where the switch is connected
  */
 SwitchAnalog::SwitchAnalog(int _pin) : SwitchAbstract(_pin) {
     last_reading = 0;
@@ -22,16 +22,6 @@ void SwitchAnalog::set_analog_range(int _min, int _max) {
     range_min = _min;      
     range_max = _max;   
     range = range_max - range_min;      
-}
-
-/**
- * SwitchAnalog::invert_switch Inverts the analog switch so that when the sensor value is
- *     at the top of the range it returns the value from the bottom of the range, and vice
- *     versa.
- * @param _onState When true it inverts the values, when false it stops inversing values
- */
-void SwitchAnalog::invert_switch(bool _onState) {
-    is_inverted = _onState;
 }
 
 /**

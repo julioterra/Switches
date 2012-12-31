@@ -15,24 +15,30 @@
 
 // create instance of the SwitchAnalog class
 //   * first param: switch pin number
-SwitchEncoder button = SwitchEncoder( 2, 4 );
+SwitchEncoder encoder = SwitchEncoder( 2, 4 );
 
 void setup() {
   // open serial connection
   Serial.begin( 9600 ); 
   
   // attach interrupt to the 
-  attachInterrupt( button.get_interrupt_pin(), handleEvent, RISING );
+  attachInterrupt( encoder.get_interrupt_pin(), handleEvent, RISING );
+  encoder.set_output_range( 255 );
 }
 
 void loop() {
-    // check if the button state has changed
-  if(button.available()) {
-    // get the button state and print it to the serial monitor
-    button.get_print_state();  
+    // check if the encoder state has changed
+  if(encoder.available()) {
+    // get the encoder state and print it to the serial monitor
+    encoder.get_print_state();  
   }
 }
 
+/**
+ * handleEvent Callback method that triggered every time that state of the encoder 
+ *   interrupt pin goes from LOW to HIGH. This method just calls the event method from
+ *   the rotary encoder object, which updates the encoder position.
+ */
 void handleEvent() {
-  button.event(); 
+  encoder.event(); 
 }
