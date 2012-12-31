@@ -5,7 +5,6 @@ The Switch library for Arduino provides classes for reading the state of switche
 This library enables you to handle input from different types of physical inputs using a consistent code/design pattern. As an added bonus, the digital switch classes feature debouncing capabilities, and the analog switch classes feature smoothing capabilities.
 
 **[Install the Library and Try it Out](#installing-the-switch-library)**
-
   
 ###Library Classes  
 Here are links to the documentation for all of the main switch library classes. Jump to these sections if you want to get started trying out the Switches library:
@@ -27,20 +26,32 @@ Installing the Switch Library
 * Unzip the downloaded file
 * Remane the "Switches-master" folder to "Switches"
 * Copy this folder into the Arduino libraries folder
-* Get Started with an example, included with library, or [by reading the documentation](#switches-library-classes-documentation)
+* Get Started with the [examples included with library](#getting-started), or [by reading the documentation](#switches-classes-documentation)
 
 [back to top](#switches-libraries-for-arduino)  
   
+Getting Started
+---------------
 
+If you want to just dive right in rather than read the documentation, the library includes four example sketches that illustrate how the library can be used to handle input from switches, buttons, analog sensors, and rotary encoders. Below is a brief overview of each example sketch. [Download the library zip file to get the library along with examples](https://github.com/julioterra/Switches/archive/master.zip)
+* **analog_switch** demonstrates how the analog switch class can be used to set-up an analog switch. The sketch sends a serial message with the switch's state whenever its state changes.   
+* **digital_switch** shows how the digital switch class handles a digital switches, when in momentary mode. The example sketch sends a serial message with the switch's state whenever its state changes.   
+* **multi_state_rgb_button** illustrates how to create a sketch that manages a multi-state button with an rbg led that reflects the button's current state. The example sketch updates the led color and sends a serial message with the switch's current state whenever the button's state changes.  
+* **rotary_encoder** shows how to hook-up a rotary encoder using the switches encoder library. The sketch sends a serial message with the encoder's current state whenever its state changes.  
+  
 Switches Library Classes Documentation
 ======================================
+
 This section features the documentation for the following Switches library classes:
 * [Abstract Switch Class](#abstract-switch-class)  
 * [Switch Class](#switch-class)  
 * [RGB Button Class](#rgb-button-class)  
 * [Analog Switch Class](#analog-switch-class)  
 * [Rotary Encoder Class](#rotary-encoder-class)  
-
+  
+### Importing Switches Libraries
+When using the Switches libraries, you only need to import the library for the specific type of switch that you are using in your project. I point this out because if you import the Switches library using Sketch -> Import Library -> Switches from the top menu bar, then all of the Switches libraries will be imported into your sketch. At which point you should feel free to delete any of the libraries that you do not need.
+  
 Abstract Switch Class
 -----------------------
 An abstract switch class that encapsulates the design pattern that is used across all of the implementation switch classes. This class serves as the parent class for all other classes. This class does not need to be imported directly into your app.
@@ -49,7 +60,7 @@ An abstract switch class that encapsulates the design pattern that is used acros
 The constructor for all classes accepts the pin number to which the physical switch will be connected. The exception is the rotary encoder class, which accepts two pin numbers. Each child class also features other configuration options, which are covered in the switch-specific sections.
 
 ```
-SwitchAbstract(int _pin)	// abstract class constructor
+SwitchAbstract(int _pin)  // abstract class constructor
 ```  
   
 ###Available Method  
