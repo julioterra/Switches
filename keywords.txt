@@ -1,28 +1,28 @@
 
 
-available	KEYWORD 2
-invert	KEYWORD 2
-set_analog_range	KEYWORD 2
-set_output_range	KEYWORD 2
-get_state	KEYWORD 2
-get_print_state	KEYWORD 2
-get_print_byte_state	KEYWORD 2
-get_interrupt_pin	KEYWORD 2
+available	KEYWORD2
+invert	KEYWORD2
+set_analog_range	KEYWORD2
+set_output_range	KEYWORD2
+get_state	KEYWORD2
+get_print_state	KEYWORD2
+get_print_byte_state	KEYWORD2
+get_interrupt_pin	KEYWORD2
 
-set_led_pins	KEYWORD 2
-set_number_of_states	KEYWORD 2
-set_led_state	KEYWORD 2
-set_midi_control	KEYWORD 2
-update_leds	KEYWORD 2
-turn_on_leds	KEYWORD 2
-turn_off_leds	KEYWORD 2
-set_current_led_state	KEYWORD 2
-momentary	KEYWORD 2
+set_led_pins	KEYWORD2
+set_number_of_states	KEYWORD2
+set_led_state	KEYWORD2
+set_midi_control	KEYWORD2
+update_leds	KEYWORD2
+turn_on_leds	KEYWORD2
+turn_off_leds	KEYWORD2
+set_current_led_state	KEYWORD2
+momentary	KEYWORD2
 
-DIGITAL_SWITCH_DEBOUNCE	LITERAL 1
-LED_MAX_BRIGHT_TLC	LITERAL 1
-LED_MAX_BRIGHT_MATRIX	LITERAL 1
-OUTPUT_MIN	LITERAL 1
-OUTPUT_MAX	LITERAL 1
-OUTPUT_RANGE	LITERAL 1
+DIGITAL_SWITCH_DEBOUNCE	LITERAL1
+LED_MAX_BRIGHT_TLC	LITERAL1
+LED_MAX_BRIGHT_MATRIX	LITERAL1
+OUTPUT_MIN	LITERAL1
+OUTPUT_MAX	LITERAL1
+OUTPUT_RANGE	LITERAL1
 
